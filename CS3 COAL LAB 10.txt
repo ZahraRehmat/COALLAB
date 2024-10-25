@@ -1,0 +1,150 @@
+LAB TASK 1:
+.model small
+.stack 100h
+.data
+arr DB 49,50,51,52
+.code
+main proc 
+    mov ax,@data
+    mov ds,ax
+    mov si,offset arr
+    mov dx,[si]
+    mov ah,2
+    int 21h
+    
+    mov dx,[si+1]
+    mov ah,2 
+    int 21h              
+    
+    mov dx,[si+2]
+    mov ah,2
+    int 21h
+    
+    mov dx,[si+3]
+    mov ah,2
+    int 21h
+    
+    movah,4ch
+    int 21h
+    main endp
+end main
+
+LAB TASK 2:
+.model small
+.stack 100h
+.data
+arr DB 49,50,51,52,53
+.code
+main proc 
+    mov ax,@data
+    mov ds,ax
+    mov si,offset arr
+    mov cx,5
+    
+    loopx:
+    mov dl,[si]
+    mov ah,2
+    int 21h
+    
+    inc si;mov dx.[si+1]
+    loop loopx
+   
+    
+    mov ah,4ch
+    int 21h
+    main endp
+end main
+
+LAB TASK 3:
+.model small
+.stack 100h
+.data
+arr db , 49,50,51,52,53,54,55,56,57
+.code
+main proc
+    
+    mov ax,@data
+    mov ds,ax
+    mov si,offset arr
+    mov cx,9
+    l1:
+    mov dl,[si+8]
+    mov ah,2
+    int 21h
+    dec si;
+    loop l1
+    
+    mov ah,4ch
+    int 21h
+    main endp
+end main
+
+LAB TaASK 4:
+.model small
+.stack 100h
+.data
+arr db 49,50,51,52,53,54,48
+.code
+main proc
+    
+    mov ax,@data
+    mov ds,ax
+    mov si,offset arr
+    
+    mov cx,7
+    mov bl,[si]
+    
+    l1:
+    cmp [si],bl
+    jle small
+    compare:
+    inc si
+    loop l1
+    
+    mov dl,bl
+    mov ah,2
+    int 21h
+    
+    small:
+    mov bl,[si]
+    jmp compare
+    
+    mov ah,4ch
+    int 21h
+    main endp
+end main
+
+LAB TASK 5:
+.model small
+.stack 100h
+.data
+arr db 49,50,51,52,53,54
+.code
+main proc
+    
+    mov ax,@data
+    mov ds,ax
+    mov si,offset arr
+    
+    mov cx,6
+    mov bl,[si]
+    
+    l1:
+    cmp [si],bl
+    jge large
+    compare:
+    inc si
+    loop l1
+    
+    mov dl,bl
+    mov ah,2
+    int 21h
+    
+    large:
+    mov bl,[si]
+    jmp compare
+    
+    mov ah,4ch
+    int 21h
+    main endp
+end main
