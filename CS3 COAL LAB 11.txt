@@ -1,0 +1,127 @@
+LAB TASK 1:
+
+.model small
+.stack 100h
+.data
+arr db 1,2,3,4,5,6,7,8,9
+.code    
+main proc
+    mov ax,@data
+    mov ds,ax
+    mov si,offset arr
+    
+    mov cx,9
+    l1:
+    push [si]
+    inc si
+    loop l1
+    
+    mov cx,9
+    l2:
+    pop [si]
+    add [si],48
+    mov dx,[si]
+    mov ah,2
+    int 21h
+    inc si
+    loop l2
+    
+    mov ah,4ch 
+    int 21h
+    main endp
+end main
+
+LAB TASK 2:  
+.model small
+.stack 100h
+.data
+.code    
+main proc
+    mov ax,'3'
+    push ax
+    mov bx,'4'
+    push bx 
+    
+    pop ax;
+    pop bx;  
+    
+    mov dx,ax
+    mov ah,2  
+    int 21h
+    mov dx,bx
+    mov ah,2
+    int 21h
+    
+    mov ah,4ch 
+    int 21h
+    main endp
+end main
+
+LAB TASK 3:
+ 
+.model small
+.stack 100h
+.data
+arr db 'Zahra'
+.code    
+main proc  
+    mov ax,@data
+    mov ds,ax
+    mov si,offset arr
+    
+    mov cx,6
+    l1:
+    push [si]
+    inc si
+    loop l1
+    
+    mov cx,6
+    l2:
+    pop [si]
+    mov dx,[si]
+    mov ah,2
+    int 21h
+    inc si
+    loop l2
+    
+    mov ah,4ch 
+    int 21h
+    main endp
+end main
+
+LAB TASK 4:
+.model small
+.stack 100h
+.data 
+.code
+main proc
+    mov cx,5
+    l1:
+    mov ah,1
+    int 21h
+    mov bx,ax
+    push bx
+    loop l1
+    
+   mov dl,10
+   mov ah,2
+   int 21h
+   mov dl,13
+   mov ah,2
+   int 21h
+   
+   mov cx,5
+   l2:
+   pop bx
+   mov dx,bx
+   mov ah,2
+   int 21h
+   loop l2
+   
+   mov ah,4ch
+   int 21h
+   main endp
+end main
+  
+
+   
